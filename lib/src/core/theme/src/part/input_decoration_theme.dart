@@ -9,7 +9,7 @@ class _InputDecorationTheme with ThemeExtensions {
         vertical: 12,
         horizontal: 16,
       ),
-      hintStyle: textStyle.body14Secondary.copyWith(
+      hintStyle: textStyle.body14Light.copyWith(
         color: color.text.grey,
       ),
       border: OutlineInputBorder(borderRadius: _borderRadius),

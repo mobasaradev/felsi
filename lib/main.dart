@@ -1,21 +1,36 @@
-import 'package:felsi/src/core/theme/theme.dart';
+import 'package:felsi/app.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-
-import 'src/feature/dashboard/home/presentation/views/home_page.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() {
-  runApp(const MyApp());
+  registerErrorHandlers();
+  runApp(
+    const ProviderScope(
+      child: MyApp(),
+    ),
+  );
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: context.themeData,
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+void registerErrorHandlers() {
+  // * Show some error UI if any uncaught exception happens
+  FlutterError.onError = (FlutterErrorDetails details) {
+    FlutterError.presentError(details);
+    debugPrint(details.toString());
+  };
+  // * Handle errors from the underlying platform/OS
+  PlatformDispatcher.instance.onError = (Object error, StackTrace stack) {
+    debugPrint(error.toString());
+    return true;
+  };
+  // * Show some error UI when any widget in the app fails to build
+  ErrorWidget.builder = (FlutterErrorDetails details) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.red,
+        title: const Text('An error occurred'),
+      ),
+      body: Center(child: Text(details.toString())),
     );
-  }
+  };
 }

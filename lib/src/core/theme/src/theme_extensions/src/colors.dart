@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 
 class _Color {
-  static const Color aliceBlue = Color(0xFFF2F8FF);
+  static const Color white = Color(0xFFFFFFFF);
   static const Color black = Color(0xFF000000);
+  static const Color transparent = Color(0x00000000);
+  // Custom Color
+  static const Color aliceBlue = Color(0xFFF2F8FF);
   static const Color columbiaBlue = Color(0xFFD6E8FF);
   static const Color crayolaBlue = Color(0xFF1877F2);
   static const Color davyGray = Color(0xFF52525B);
@@ -11,17 +14,15 @@ class _Color {
   static const Color gray = Color(0xFF75757C);
   static const Color jet = Color(0xFF313137);
   static const Color platinum = Color(0xFFD5DCE4);
-  static const Color white = Color(0xFFFFFFFF);
   static const Color bitterSweet = Color(0xFFFF5454);
   static const Color orangeWheel = Color(0xFFFB8937);
-
 }
 
 class _AppBarColor {
   const _AppBarColor();
 
   /// Color Code #F2F8FF (Alice Blue)
-  Color get background => _Color.aliceBlue;
+  Color get background => _Color.transparent;
 
   /// Color Code #313137 (Jet)
   Color get icon => _Color.jet;
@@ -76,6 +77,9 @@ class ColorExtension extends ThemeExtension<ColorExtension> {
   /// Color Code #BABABD (French Gray)
   final border = _Color.frenchGray;
 
+  /// Color Code #00000000 (transparent)
+  final transparent = _Color.transparent;
+
   /// Color Code #BABABD (French Gray)
   final divider = _Color.platinumLower;
 
@@ -90,7 +94,7 @@ class ColorExtension extends ThemeExtension<ColorExtension> {
 
   /// Color Code #D6E8FF (Columbia Blue)
   final blueLower = _Color.columbiaBlue;
-  
+
   /// Color Code #F2F8FF (Alice Blue)
   final fieldBg = _Color.aliceBlue;
 
